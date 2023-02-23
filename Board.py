@@ -2,6 +2,9 @@ import numpy as np
 import chess
 from tkinter import *
 
+black = ["r", "n", "b", "q", "k", "p"]
+white = ["R", "N", "B", "Q", "K", "P"]
+
 def drawBoard(x, y):
     color = "white"
     while y < 400:
@@ -12,7 +15,6 @@ def drawBoard(x, y):
                 color = "black"
             else:
                 color = "white"
-            print(x, y)
             x = x + 50
         x = 0
         y = y + 50
@@ -20,7 +22,29 @@ def drawBoard(x, y):
             color = "black"
         else:
             color = "white"
-    
+
+def updateBoard(board):
+    def drawImage(piece, pos, row, col):
+        x = row * 50
+        y = col * 50
+        print(piece)
+        if piece in black:
+            canvas.create_rectangle(x+10, y+10, x+40, y+40,
+            outline="white", fill="black")
+            print("black")
+        elif piece in white:
+            canvas.create_rectangle(x+10, y+10, x+40, y+40,
+            outline="black", fill="white")
+            print("white")
+           
+
+    pos = 0
+    while pos < 64:
+        piece = board.piece_at(pos)
+        col = chess.square_file(pos)
+        row = chess.square_rank(pos)
+        drawImage(piece, pos, row, col)
+        pos += 1
 
 
 
@@ -35,6 +59,8 @@ canvas = Canvas(height = 800, width = 600)
 drawBoard(0,0)
 canvas.pack()
 
+updateBoard(board)
+canvas.pack()
 
 window.mainloop()
 
