@@ -23,17 +23,17 @@ def drawBoard(x, y):
         else:
             color = "white"
 
-def updateBoard(board):
+def updateBoard():
     def drawImage(piece, pos, row, col):
         x = row * 50
         y = col * 50
         print(piece)
         if piece in black:
-            canvas.create_rectangle(x+10, y+10, x+40, y+40,
+            canvas.create_rectangle(x+20, y+20, x+30, y+30,
             outline="white", fill="black")
             print("black")
         elif piece in white:
-            canvas.create_rectangle(x+10, y+10, x+40, y+40,
+            canvas.create_rectangle(x+20, y+20, x+30, y+30,
             outline="black", fill="white")
             print("white")
            
@@ -55,11 +55,11 @@ window = Tk()
 
 window.title("Chess")
 window.geometry("800x600")
-canvas = Canvas(height = 800, width = 600)
+canvas = Canvas(height = 801, width = 601)
 drawBoard(0,0)
 canvas.pack()
 
-updateBoard(board)
+updateBoard()
 canvas.pack()
 
 window.mainloop()
