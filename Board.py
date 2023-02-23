@@ -9,20 +9,16 @@ def drawBoard(x, y):
             canvas.create_rectangle(x, y, x+50, y+50,
              outline="black", fill=color)
             if color == "white":
-                #print("w")
                 color = "black"
             else:
-                #print("b")
                 color = "white"
             print(x, y)
             x = x + 50
         x = 0
         y = y + 50
         if color == "white":
-            #print("w")
             color = "black"
         else:
-            #print("b")
             color = "white"
     
 
